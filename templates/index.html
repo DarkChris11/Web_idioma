@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Diálogos</title>
+</head>
+<body>
+    <h1>Generador de Diálogos con Eleven Labs</h1>
+    <form method="POST" action="/generar_dialogo">
+        <label for="prompt">Prompt (Diálogo):</label><br>
+        <input type="text" id="prompt" name="prompt" required><br><br>
+
+        <label for="num_frases">Número de frases:</label><br>
+        <input type="number" id="num_frases" name="num_frases" required><br><br>
+
+        <label for="voice_ids">Selecciona las voces (puedes seleccionar varias):</label><br>
+        <input type="checkbox" name="voice_ids" value="1"> Voz 1<br>
+        <input type="checkbox" name="voice_ids" value="2"> Voz 2<br>
+        <input type="checkbox" name="voice_ids" value="3"> Voz 3<br><br>
+
+        <input type="submit" value="Generar Diálogo">
+    </form>
+
+    {% if dialogo %}
+    <h2>Diálogo Generado:</h2>
+    <p>{{ dialogo }}</p>
+    {% endif %}
+
+    {% if gemini_data %}
+    <h2>Datos de Gemini:</h2>
+    <pre>{{ gemini_data | tojson }}</pre>
+    {% endif %}
+</body>
+</html>
